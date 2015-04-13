@@ -10,6 +10,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set hidden
+set backspace=start,eol,indent
 ""searching
 set hlsearch
 set incsearch
