@@ -2,7 +2,6 @@
 ""general
 set number
 set cursorline
-hi clear CursorLine
 set title
 set ambiwidth=double
 set tabstop=4
@@ -10,6 +9,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set hidden
+set backspace=indent,eol,start
 ""searching
 set hlsearch
 set incsearch
@@ -21,6 +21,7 @@ language C
 """nomal mode
 nnoremap <Esc><Esc> :nohlsearch<Esc>
 nnoremap ; :
+nnoremap <Space>h :<C-u>vertical belowright h<Space>
 """insert mode
 inoremap <silent>jj <Esc>
 inoremap <C-h> <Left>
@@ -32,8 +33,10 @@ inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap {<Enter> {<Enter><Enter>}<Up>
 inoremap { {}<Left>
+"""for ocaml comment
+inoremap (* (*<Space><Space>*)<Left><Left><Left>
 ""clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 "neobundle
 set nocompatible
@@ -44,8 +47,6 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-
 "plugins
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -55,20 +56,14 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'croaker/mustang-vim'
 NeoBundle 'nanotech/jellybeans.vim'
+call neobundle#end()
 
 filetype plugin indent on
 
 "color
-colorscheme jellybeans
-if &term =~ "xterm-256color" || "screen-256color"
-    set t_Co=256
-    set t_Sf=[3%dm
-    set t_Sb=[4%dm
-elseif &term "xterm-color"
-    set t_Co=8
-    set t_Sf=[3%dm
-    set t_Sb=[4%dm
+colorscheme kinako
+if $TERM == "xterm"
+	set t_Co=256
 endif
 
 syntax enable
-hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
