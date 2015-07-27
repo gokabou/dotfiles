@@ -1,28 +1,47 @@
-"settings
-""general
+""""""""""""
+" settings "
+""""""""""""
+
+" initiation
+"""""""""""""
+set all&
+
+" general
+""""""""""
 set number
 set cursorline
+hi clear CursorLine
 set title
 set ambiwidth=double
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set autoindent
 set smartindent
 set hidden
-set backspace=indent,eol,start
-""searching
+set backspace=start,eol,indent
+
+" searching
+""""""""""""
 set hlsearch
 set incsearch
 set ignorecase
 set wrapscan
-""language
+
+" language
+""""""""""""
 language C
-""key remapping
-"""nomal mode
+" key remapping
+""""""""""""
+  " nomal mode
+  """""""""""""
 nnoremap <Esc><Esc> :nohlsearch<Esc>
+"*** these are for the US keyboard ***"
 nnoremap ; :
-nnoremap <Space>h :<C-u>vertical belowright h<Space>
-"""insert mode
+nnoremap - ^
+nnoremap ' "
+  " insert mode
+  """"""""""""""
 inoremap <silent>jj <Esc>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -33,12 +52,19 @@ inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap {<Enter> {<Enter><Enter>}<Up>
 inoremap { {}<Left>
-"""for ocaml comment
-inoremap (* (*<Space><Space>*)<Left><Left><Left>
-""clipboard
-set clipboard=unnamed
 
-"neobundle
+" clipboard
+""""""""""""
+set clipboard=unnamedplus
+
+" color
+""""""""
+autocmd ColorScheme * hi LineNr ctermfg=5
+autocmd ColorScheme * hi statusline ctermfg=0
+autocmd ColorScheme * hi statusline ctermbg=7
+
+" neobundle
+""""""""""""
 set nocompatible
 filetype off
 
@@ -47,7 +73,10 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-"plugins
+call neobundle#end()
+
+" plugins
+""""""""""
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'mattn/emmet-vim'
@@ -56,14 +85,17 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'croaker/mustang-vim'
 NeoBundle 'nanotech/jellybeans.vim'
-call neobundle#end()
 
 filetype plugin indent on
 
-"color
+" color
+""""""""
 colorscheme kinako
-if $TERM == "xterm"
-	set t_Co=256
+if $TERM == 'xterm'
+    set t_Co=256
 endif
-
 syntax enable
+
+" quick editting .vimrc
+""""""""""""""""""""""""
+nnoremap ,v :e $MYVIMRC<Enter>
