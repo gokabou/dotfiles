@@ -15,6 +15,10 @@ set title
 set ambiwidth=double
 set tabstop=4
 set shiftwidth=4
+augroup tabindent
+autocmd! FileType ocaml setlocal tabstop=2 shiftwidth=2
+autocmd! FileType html setlocal tabstop=2 shiftwidth=2
+autocmd! FileType tex setlocal tabstop=2 shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
@@ -99,3 +103,7 @@ syntax enable
 " quick editting .vimrc
 """"""""""""""""""""""""
 nnoremap ,v :e $MYVIMRC<Enter>
+
+" my quick reference for vim
+"""""""""""""""""""""""""""""
+nnoremap ,h :view /home/gokabou/.vim/my_quick_ref.txt<Enter>

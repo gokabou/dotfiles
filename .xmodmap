@@ -1,3 +1,14 @@
+! This is the comment.
+
+! Remove Alt_L from modifier key group.
+! Alt_L belongs to the mod1 group.
+remove mod1 = Alt_L
+
+! keycode code = A B C D
+! Pressing code singly express A
+! Pressing code with Shift express B
+! Pressing code with Mode_switch express C
+! Pressing code with Mode_switch and Shift express D
 keycode   8 =
 keycode   9 = Escape NoSymbol Escape
 keycode  10 = 1 exclam 1 exclam
@@ -27,16 +38,16 @@ keycode  33 = p P p P
 keycode  34 = bracketleft braceleft bracketleft braceleft
 keycode  35 = bracketright braceright bracketright braceright
 keycode  36 = Return NoSymbol Return
-keycode  37 = Caps_Lock NoSymbol Caps_Lock
+keycode  37 = Control_L NoSymbol Caps_Lock
 keycode  38 = a A a A
 keycode  39 = s S s S
 keycode  40 = d D d D
 keycode  41 = f F f F
 keycode  42 = g G g G
-keycode  43 = h H h H
-keycode  44 = j J j J
-keycode  45 = k K k K
-keycode  46 = l L l L
+keycode  43 = h H Left Left
+keycode  44 = j J Down Down
+keycode  45 = k K Up Up
+keycode  46 = l L Right Right
 keycode  47 = semicolon colon semicolon colon
 keycode  48 = apostrophe quotedbl apostrophe quotedbl
 keycode  49 = grave asciitilde grave asciitilde
@@ -54,9 +65,9 @@ keycode  60 = period greater period greater
 keycode  61 = slash question slash question
 keycode  62 = Shift_R NoSymbol Shift_R
 keycode  63 = KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab
-keycode  64 = Alt_L Meta_L Alt_L Meta_L
+keycode  64 = Mode_switch
 keycode  65 = space NoSymbol space
-keycode  66 = Control_L NoSymbol Control_L
+keycode  66 = Caps_Lock NoSymbol Control_L
 keycode  67 = F1 F1 F1 F1 F1 F1 XF86Switch_VT_1
 keycode  68 = F2 F2 F2 F2 F2 F2 XF86Switch_VT_2
 keycode  69 = F3 F3 F3 F3 F3 F3 XF86Switch_VT_3
@@ -246,5 +257,3 @@ keycode 252 =
 keycode 253 =
 keycode 254 =
 keycode 255 =
-clear Lock
-add Control = Control_L
