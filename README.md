@@ -11,4 +11,4 @@ Maybe this was generated automatically...
 As you know, This is the Vim setting file.
 
 ###.xmodmap
-This is the Key binding file.
+This is the Key binding file for Linux.
