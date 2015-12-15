@@ -18,6 +18,7 @@ set shiftwidth=4
 augroup tabindent
 autocmd! FileType ocaml setlocal tabstop=2 shiftwidth=2
 autocmd! FileType html setlocal tabstop=2 shiftwidth=2
+autocmd! FileType xml setlocal tabstop=2 shiftwidth=2
 autocmd! FileType tex setlocal tabstop=2 shiftwidth=2
 set expandtab
 set autoindent
@@ -35,15 +36,22 @@ set wrapscan
 " language
 """"""""""""
 language C
+
 " key remapping
 """"""""""""
   " nomal mode
   """""""""""""
 nnoremap <Esc><Esc> :nohlsearch<Esc>
-"*** these are for the US keyboard ***"
+"set very magic
+nnoremap / /\v
 nnoremap ; :
-nnoremap - ^
-nnoremap ' "
+
+""If you use a JIS keyboard
+""nnoremap : "
+
+""If you use an US keyboard
+""nnoremap ' "
+
   " insert mode
   """"""""""""""
 inoremap <silent>jj <Esc>
@@ -54,12 +62,18 @@ inoremap <C-l> <Right>
 inoremap " ""<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
+inoremap \" \"\"
+inoremap \' \'\'
 inoremap {<Enter> {<Enter><Enter>}<Up>
 inoremap { {}<Left>
 
 " clipboard
 """"""""""""
-set clipboard=unnamedplus
+""If you use Mac OS X
+set clipboard=unnamed
+
+""If you use Linux (Debian)
+""set clipboard=unnamedplus
 
 " color
 """"""""
@@ -104,6 +118,3 @@ syntax enable
 """"""""""""""""""""""""
 nnoremap ,v :e $MYVIMRC<Enter>
 
-" my quick reference for vim
-"""""""""""""""""""""""""""""
-nnoremap ,h :view /home/gokabou/.vim/my_quick_ref.txt<Enter>
