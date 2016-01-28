@@ -10,6 +10,7 @@ set all&
 """"""""""
 set number
 set cursorline
+set ruler
 hi clear CursorLine
 set title
 set ambiwidth=double
@@ -20,11 +21,34 @@ autocmd! FileType ocaml setlocal tabstop=2 shiftwidth=2
 autocmd! FileType html setlocal tabstop=2 shiftwidth=2
 autocmd! FileType xml setlocal tabstop=2 shiftwidth=2
 autocmd! FileType tex setlocal tabstop=2 shiftwidth=2
+autocmd! FileType json setlocal tabstop=2 shiftwidth=2
+autocmd! FileType aspectj setlocal tabstop=4 shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
 set hidden
 set backspace=start,eol,indent
+
+" my commands and functions
+""""""""""""""""""""""""""""
+  " commands
+  """""""""""
+command! Wcount call s:wcnt()
+  " functions
+  """"""""""""
+function! s:wcnt()
+    let l:cbuf = getline(0,'$')
+
+    let l:wc = 0
+    for line in cbuf
+        let xstr = substitute(line,'\i[A-z]\+','x','g')
+        let xnum = substitute(xstr,"[\-/(){}\\[\\]$&,. ]",'','g')
+        let l:wc += strlen(xnum)
+    endfor
+    
+    echo l:wc
+endfunction
+
 
 " searching
 """"""""""""
@@ -32,6 +56,13 @@ set hlsearch
 set incsearch
 set ignorecase
 set wrapscan
+  " quickfix
+  """""""""""
+autocmd! QuickFixCmdPost *grep* cwindow
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :<C-u>cfirst<CR>
+nnoremap ]Q :<C-u>clast<CR>
 
 " language
 """"""""""""
